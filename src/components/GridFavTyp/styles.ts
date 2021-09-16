@@ -6,6 +6,7 @@ export const Container = styled.section`
     display: flex;
     flex-direction: column;
     height: 5rem;
+
     ::-webkit-scrollbar {
       width: 12px;
       height: 200px;

@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import { CardPoke } from '../components/CardPoke'
-import { Main } from '../components/Main'
+import { GridFavTyp } from '../components/GridFavTyp'
 import { GridCard } from '../components/GridCards'
 import { GridFilter } from '../components/GridFilter'
 import { Content } from '../components/Content'
@@ -131,13 +131,13 @@ export const Home = () => {
         </GridFilter>
 
         <Content>
-          <Main>
+          <GridFavTyp>
             <Filter handleFilters={filters => handleFilters(filters, 'type')} />
             <Switch
               favorite={hasFavorite}
               handleFaVoritesChange={() => setHasFavorite(!hasFavorite)}
             />
-          </Main>
+          </GridFavTyp>
           <GridCard>
             {filterType.length === 0 && !hasFavorite && !pokeFilterOrder ? (
               <CardPoke

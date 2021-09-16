@@ -54,17 +54,26 @@ export const CardPoke = ({
     setCheckd(newChecked)
     handleFaVorites(newChecked)
   }
+
   return (
     <>
       {data.map((dates, index) => (
         <Styled.Wrapper key={index}>
-          <Styled.WrapperIcon
-            className={`show ${
-              checked.indexOf(dates) !== -1 ? 'fixed' : 'desfixed'
-            }`}
-            onClick={() => handleFavorite(dates)}
-          >
-            <Styled.Icon icon={['far', 'heart']} />
+          <Styled.WrapperIcon>
+            <Styled.Icon
+              className={` ${
+                checked.indexOf(dates) === -1 ? 'show' : 'invisible'
+              }`}
+              onClick={() => handleFavorite(dates)}
+              icon={['far', 'heart']}
+            />
+            <Styled.Icon
+              className={` ${
+                checked.indexOf(dates) === -1 ? 'invisible' : 'fixed'
+              }`}
+              onClick={() => handleFavorite(dates)}
+              icon={['fas', 'heart']}
+            />
           </Styled.WrapperIcon>
           <Styled.WrapperImg>
             <img src={dates?.sprites?.normal} alt="pokemon" />

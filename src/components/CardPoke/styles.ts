@@ -3,9 +3,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Wrapper = styled.div`
   ${() => css`
-    width: 10.5rem;
+    position: relative;
+    min-width: 0;
+    word-wrap: break-word;
+    width: 13.5rem;
     border-radius: 0.5rem;
     margin: 0 1rem 1rem;
+
+    .show {
+      visibility: hidden;
+    }
 
     &:hover {
       .show {
@@ -14,28 +21,34 @@ export const Wrapper = styled.div`
     }
 
     .fixed:focus {
-      visibility: visible;
+      display: inline-block;
     }
     .desfixed {
-      visibility: hidden;
+      display: none;
+    }
+    .invisible {
+      display: none;
     }
   `}
 `
 export const WrapperIcon = styled.div`
   ${() => css`
-    width: 100%;
     position: relative;
-    display: flex;
-    justify-content: end;
-    cursor: pointer;
-    top: 1.7rem;
-    right: 0.5rem;
+    left: 11rem;
+    top: 2rem;
   `}
 `
 
 export const Icon = styled(FontAwesomeIcon)`
   color: ${props => props.theme.fg.danger};
   font-size: 1.4rem;
+  cursor: pointer;
+`
+
+export const IconFix = styled(FontAwesomeIcon)`
+  color: ${props => props.theme.fg.danger};
+  font-size: 1.4rem;
+  cursor: pointer;
 `
 
 export const WrapperImg = styled.div`
@@ -46,7 +59,7 @@ export const WrapperImg = styled.div`
     border-radius: 9px;
     img {
       width: 100%;
-      height: 9rem;
+      height: 13rem;
     }
   `}
 `
