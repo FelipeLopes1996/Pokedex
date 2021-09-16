@@ -25,7 +25,7 @@ export const Home = () => {
 
   const getpokes = React.useCallback(async () => {
     const results = await getPokemons()
-    setAllPoke(results.slice(0, 10))
+    setAllPoke(results.slice(0, 100))
   }, [])
   React.useEffect(() => {
     getpokes()
