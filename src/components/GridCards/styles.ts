@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components'
 export const Wrapper = styled.section`
   ${() => css`
     width: 80%;
-    height: 80vh;
+    max-height: 80vh;
     display: flex;
     flex-wrap: wrap;
     overflow: scroll;
