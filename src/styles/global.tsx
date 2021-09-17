@@ -25,9 +25,6 @@ export default createGlobalStyle`
   body {
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
-    background: ${props => props.theme.bg.light};
-    color: ${props => props.theme.fg.dark};
-    transition: background .6s ease-in-out, color .6s  ease-in-out;
     overflow: hidden;
   }
 

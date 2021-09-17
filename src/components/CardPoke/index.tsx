@@ -57,43 +57,44 @@ export const CardPoke = ({
 
   return (
     <>
-      {data.map((dates, index) => (
-        <Styled.Wrapper key={index}>
-          <Styled.WrapperIcon>
-            <Styled.Icon
-              className={` ${
-                checked.indexOf(dates) === -1 ? 'show' : 'invisible'
-              }`}
-              onClick={() => handleFavorite(dates)}
-              icon={['far', 'heart']}
-            />
-            <Styled.Icon
-              className={` ${
-                checked.indexOf(dates) === -1 ? 'invisible' : 'fixed'
-              }`}
-              onClick={() => handleFavorite(dates)}
-              icon={['fas', 'heart']}
-            />
-          </Styled.WrapperIcon>
-          <Styled.WrapperImg>
-            <img src={dates?.sprites?.normal} alt="pokemon" />
-          </Styled.WrapperImg>
-          <Styled.WrappeName>
-            <span>{dates?.national_number}</span>
-            <p>{dates?.name}</p>
-          </Styled.WrappeName>
-          <Styled.WrappeType>
-            {dates.type.map((types: any, index) => (
-              <p
-                className={typeColors[types] ? typeColors[types] : ''}
-                key={index}
-              >
-                {types}
-              </p>
-            ))}
-          </Styled.WrappeType>
-        </Styled.Wrapper>
-      ))}
+      {data &&
+        data.map((dates, index) => (
+          <Styled.Wrapper key={index}>
+            <Styled.WrapperIcon>
+              <Styled.Icon
+                className={` ${
+                  checked.indexOf(dates) === -1 ? 'show' : 'invisible'
+                }`}
+                onClick={() => handleFavorite(dates)}
+                icon={['far', 'heart']}
+              />
+              <Styled.Icon
+                className={` ${
+                  checked.indexOf(dates) === -1 ? 'invisible' : 'fixed'
+                }`}
+                onClick={() => handleFavorite(dates)}
+                icon={['fas', 'heart']}
+              />
+            </Styled.WrapperIcon>
+            <Styled.WrapperImg>
+              <img src={dates?.sprites?.normal} alt="pokemon" />
+            </Styled.WrapperImg>
+            <Styled.WrappeName>
+              <span>{dates?.national_number}</span>
+              <p>{dates?.name}</p>
+            </Styled.WrappeName>
+            <Styled.WrappeType>
+              {dates.type.map((types: any, index) => (
+                <p
+                  className={typeColors[types] ? typeColors[types] : ''}
+                  key={index}
+                >
+                  {types}
+                </p>
+              ))}
+            </Styled.WrappeType>
+          </Styled.Wrapper>
+        ))}
     </>
   )
 }

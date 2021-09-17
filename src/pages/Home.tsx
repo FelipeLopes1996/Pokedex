@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React, { useCallback } from 'react'
+import * as Styled from './styles'
 import { CardPoke } from '../components/CardPoke'
 import { GridFavTyp } from '../components/GridFavTyp'
 import { GridCard } from '../components/GridCards'
@@ -10,6 +12,13 @@ import { Switch } from '../components/Switch'
 import { Input } from '../components/Input'
 import { Select } from '../components/Select'
 import { getPokemons } from '../service/api'
+import {
+  filterPoks,
+  filterOrder,
+  filterTypes,
+  orderAzFunc,
+  orderZaFunc,
+} from '../utils/utilsFunc'
 
 export const Home = () => {
   const [allPoke, setAllPoke] = React.useState([])
@@ -27,58 +36,76 @@ export const Home = () => {
     const results = await getPokemons()
     setAllPoke(results.slice(0, 100))
   }, [])
+
   React.useEffect(() => {
     getpokes()
   }, [getpokes])
 
   const filterType = React.useMemo(() => {
     let types: any = []
-    allPoke.forEach((pok: any) => {
-      if (pok?.type.some((resp: any) => filteres.type.indexOf(resp) >= 0)) {
-        types.push(pok)
-      }
-    })
-    return types
-  }, [allPoke, filteres.type])
+    return filterTypes(allPoke, types, filteres)
+  }, [allPoke, filteres])
 
-  const pokeFilter = React.useMemo(() => {
-    return allPoke.filter((poks: any) =>
-      poks.name.toLowerCase().includes(search.toLowerCase())
-        ? poks
-        : poks.national_number.includes(search)
-        ? poks
-        : null
-    )
+  const filterTypeSearch = React.useMemo(() => {
+    return filterPoks(filterType, search)
+  }, [filterType, search])
+
+  const pokeFilterSearch = React.useMemo(() => {
+    return filterPoks(allPoke, search)
   }, [allPoke, search])
 
-  const revertArr = pokeFilter.slice(0).reverse()
+  const orderAz = orderAzFunc(pokeFilterSearch)
 
-  const orderAz = pokeFilter.slice(0).sort(function (a, b) {
-    return a?.name.toLowerCase() > b.name.toLowerCase()
-      ? 1
-      : b?.name.toLowerCase() > a?.name.toLowerCase()
-      ? -1
-      : 0
-  })
-  const orderZa = pokeFilter.slice(0).sort(function (a, b) {
-    return a?.name.toLowerCase() > b.name.toLowerCase()
-      ? -1
-      : b?.name.toLowerCase() > a?.name.toLowerCase()
-      ? 1
-      : 0
-  })
+  const orderZa = orderZaFunc(pokeFilterSearch)
+
+  const revertArr = pokeFilterSearch.slice(0).reverse()
+
+  const options = [pokeFilterSearch, revertArr, orderAz, orderZa]
 
   const pokeFilterOrder = React.useMemo(() => {
-    return searchOrder === '1'
-      ? pokeFilter
-      : searchOrder === '2'
-      ? revertArr
-      : searchOrder === '3'
-      ? orderAz
-      : searchOrder === '4'
-      ? orderZa
-      : null
-  }, [revertArr, orderAz, orderZa, pokeFilter, searchOrder])
+    return filterOrder(searchOrder, options)
+  }, [options, searchOrder])
+
+  const orderAzType = orderAzFunc(filterType)
+
+  const orderZaType = orderZaFunc(filterType)
+
+  const revertArrType = filterType.slice(0).reverse()
+
+  const optionsType = [filterType, revertArrType, orderAzType, orderZaType]
+
+  const pokeFilterOrderType = React.useMemo(() => {
+    return filterOrder(searchOrder, optionsType)
+  }, [optionsType, searchOrder])
+
+  const retornaValue = React.useCallback(() => {
+    if (filterType.length === 0 && !pokeFilterOrder && pokeFilterSearch)
+      return pokeFilterSearch
+    if (filterType.length === 0 && pokeFilterOrder) return pokeFilterOrder
+
+    if (filterType.length > 0 && !pokeFilterOrderType && filterTypeSearch)
+      return filterTypeSearch
+
+    if (filterType.length > 0 && pokeFilterOrderType) return pokeFilterOrderType
+  }, [
+    filterType.length,
+    filterTypeSearch,
+    pokeFilterOrder,
+    pokeFilterOrderType,
+    pokeFilterSearch,
+  ])
+
+  const testea = React.useMemo(() => {
+    return retornaValue()
+  }, [retornaValue])
+
+  React.useEffect(() => {
+    retornaValue()
+  }, [retornaValue])
+
+  const ObervabelFilterSeach = React.useMemo(() => {
+    return !filterType.length ? pokeFilterSearch : filterTypeSearch
+  }, [filterType.length, filterTypeSearch, pokeFilterSearch])
 
   const handleAddFavorites = useCallback(
     (fav: any, pok: any) => {
@@ -99,75 +126,51 @@ export const Home = () => {
     [filteres]
   )
 
-  const valid = filterType.length > 0 && !hasFavorite
-  const validFav = hasFavorite
-
   return (
-    <>
+    <Styled.Content>
       <Header />
-      <>
-        <GridFilter>
-          <Input
-            value={search}
-            type="text"
-            placeHolder={`${
-              valid
-                ? 'Desmarque o filtro para pesquisar'
-                : 'Pesquisar por nome ou número'
-            }`}
-            onChange={v => setSearch(v)}
-            disabled={valid || validFav}
+      <GridFilter>
+        <Input
+          value={search}
+          type="text"
+          placeHolder="Pesquisar por nome ou número"
+          onChange={v => setSearch(v)}
+        />
+        <Select value={searchOrder} onChange={v => setSearchOrder(v)}>
+          <option value="1">Menor Número</option>
+          <option value="2">Maior Número</option>
+          <option value="3">A-Z</option>
+          <option value="4">Z-A</option>
+        </Select>
+      </GridFilter>
+
+      <Content>
+        <GridFavTyp>
+          <Filter handleFilters={filters => handleFilters(filters, 'type')} />
+          <Switch
+            favorite={hasFavorite}
+            handleFaVoritesChange={() => setHasFavorite(!hasFavorite)}
           />
-          <Select
-            disabled={valid || validFav}
-            value={searchOrder}
-            onChange={v => setSearchOrder(v)}
-          >
-            <option value="1">Menor Número</option>
-            <option value="2">Maior Número</option>
-            <option value="3">A-Z</option>
-            <option value="4">Z-A</option>
-          </Select>
-        </GridFilter>
-
-        <Content>
-          <GridFavTyp>
-            <Filter handleFilters={filters => handleFilters(filters, 'type')} />
-            <Switch
-              favorite={hasFavorite}
-              handleFaVoritesChange={() => setHasFavorite(!hasFavorite)}
+        </GridFavTyp>
+        <GridCard>
+          {!hasFavorite ? (
+            <CardPoke
+              data={testea}
+              handleFaVorites={pok => handleAddFavorites(pok, 'poke')}
             />
-          </GridFavTyp>
-          <GridCard>
-            {filterType.length === 0 && !hasFavorite && !pokeFilterOrder ? (
-              <CardPoke
-                data={pokeFilter}
-                handleFaVorites={pok => handleAddFavorites(pok, 'poke')}
-              />
-            ) : !hasFavorite && filterType.length === 0 ? (
-              <CardPoke
-                data={pokeFilterOrder}
-                handleFaVorites={pok => handleAddFavorites(pok, 'poke')}
-              />
-            ) : hasFavorite ? (
-              <CardPoke
-                data={favorites.poke}
-                handleFaVorites={pok => handleAddFavorites(pok, 'poke')}
-              />
-            ) : filterType ? (
-              <CardPoke
-                data={filterType}
-                handleFaVorites={pok => handleAddFavorites(pok, 'poke')}
-              />
-            ) : null}
+          ) : hasFavorite ? (
+            <CardPoke
+              data={favorites.poke}
+              handleFaVorites={pok => handleAddFavorites(pok, 'poke')}
+            />
+          ) : null}
 
-            {hasFavorite && favorites.poke.length === 0 && (
-              <h1>Não há pokemons nos favoritos</h1>
-            )}
-            {pokeFilter.length === 0 && <h1>Não há este pokemon</h1>}
-          </GridCard>
-        </Content>
-      </>
-    </>
+          {hasFavorite && favorites.poke.length === 0 && (
+            <h1>Não há pokemons nos favoritos</h1>
+          )}
+          {ObervabelFilterSeach.length === 0 && <h1>Não há este pokemon</h1>}
+        </GridCard>
+      </Content>
+    </Styled.Content>
   )
 }
