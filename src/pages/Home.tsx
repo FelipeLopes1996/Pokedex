@@ -67,13 +67,18 @@ export const Home = () => {
     return filterOrder(searchOrder, options)
   }, [options, searchOrder])
 
-  const orderAzType = orderAzFunc(filterType)
+  const orderAzType = orderAzFunc(filterTypeSearch)
 
-  const orderZaType = orderZaFunc(filterType)
+  const orderZaType = orderZaFunc(filterTypeSearch)
 
-  const revertArrType = filterType.slice(0).reverse()
+  const revertArrType = filterTypeSearch.slice(0).reverse()
 
-  const optionsType = [filterType, revertArrType, orderAzType, orderZaType]
+  const optionsType = [
+    filterTypeSearch,
+    revertArrType,
+    orderAzType,
+    orderZaType,
+  ]
 
   const pokeFilterOrderType = React.useMemo(() => {
     return filterOrder(searchOrder, optionsType)
@@ -169,7 +174,7 @@ export const Home = () => {
           {hasFavorite && favorites.poke.length === 0 && (
             <h1>Não há pokemons nos favoritos</h1>
           )}
-          {ObervabelFilterSeach.length === 0 && <h1>Não há este pokemon</h1>}
+          {testea.length === 0 && <h1>Não há este pokemon</h1>}
         </GridCard>
       </Content>
     </Styled.Content>
