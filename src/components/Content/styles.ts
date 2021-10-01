@@ -4,19 +4,10 @@ export const Container = styled.section`
   ${() => css`
     display: flex;
     margin: 1rem 10rem 0;
-    /* height: 100vh; */
-    /* overflow-y: auto;*/
-
-    /* ::-webkit-scrollbar {
-      width: 12px;
-      height: 200px;
+    @media (max-width: 1000px) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
-
-    ::-webkit-scrollbar-thumb {
-      border-radius: 10px;
-      height: 200px;
-      border: 3px solid #ffffff;
-      background-color: #e2350d;
-    } */
   `}
 `

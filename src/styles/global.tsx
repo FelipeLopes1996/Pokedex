@@ -10,7 +10,24 @@ export default createGlobalStyle`
     font-size: 62.5%;
     scroll-behavior: smooth;
   }
-  a,
+  body {
+    font-size: 1.6rem;
+  }
+  /* * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+  }
+  body {
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+  } */
+  /* a,
   button {
     &,
     &:focus,
@@ -22,13 +39,8 @@ export default createGlobalStyle`
     text-decoration: none;
     color: ${props => props.theme.fg.dark};
   }
-  body {
-    font-size: 1rem;
-    font-family: 'Roboto', sans-serif;
-    overflow: hidden;
-  }
 
   h1,h2,h3,h4,h5,h6 {
     color: ${props => props.theme.fg.dark}
-  }
+  } */
 `

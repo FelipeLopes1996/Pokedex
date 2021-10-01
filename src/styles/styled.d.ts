@@ -2,6 +2,9 @@ import 'styled-components'
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    media: {
+      lteMedium: string
+    }
     title: string
     bg: {
       primary: string

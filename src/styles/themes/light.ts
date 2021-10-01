@@ -1,5 +1,16 @@
 export default {
   title: 'light',
+  media: {
+    lteMedium: '(max-width: 768px)',
+    lteOrEqSmallest: '(max-width: 320px)',
+    lteOrEqSmall: '(max-width: 576px)',
+    lteOrEqMedium: '(max-width: 768px)',
+    lteOrEqLarge: '(max-width: 992px)',
+    gteOrEqSmallest: '(min-width: 320px)',
+    gteOrEqSmall: '(min-width: 576px)',
+    gteOrEqMedium: '(min-width: 768px)',
+    gteOrEqLarge: '(min-width: 992px)',
+  },
   bg: {
     primary: '#007',
     secondary: '#6c757d',

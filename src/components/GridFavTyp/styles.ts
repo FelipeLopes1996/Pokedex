@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components'
 
 export const Container = styled.section`
   ${() => css`
-    width: 30%;
+    width: 10%;
     display: flex;
     flex-direction: column;
     height: 5rem;
 
-    ::-webkit-scrollbar {
+    /* ::-webkit-scrollbar {
       width: 12px;
       height: 200px;
     }
@@ -17,6 +17,6 @@ export const Container = styled.section`
       height: 200px;
       border: 3px solid #ffffff;
       background-color: #e2350d;
-    }
+    } */
   `}
 `

@@ -9,8 +9,10 @@ export const Container = styled.section`
     width: 100%;
     margin-top: 1rem;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
   `}
 `

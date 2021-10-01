@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Wrapper = styled.div`
   ${() => css`
-    width: 100%;
     background: #dc3545;
     padding: 1rem 10rem;
+
+    @media (max-width: 1000px) {
+    }
   `}
 `
 
@@ -20,8 +22,12 @@ export const WrapperNav = styled.nav`
       h1 {
         font-size: 1.7rem;
         margin-left: 1.5rem;
+        margin-right: 1.5rem;
         color: ${props => props.theme.bg.light};
       }
+    }
+    @media (max-width: 1000px) {
+      justify-content: center;
     }
   `}
 `
@@ -31,10 +37,6 @@ export const Icon = styled(FontAwesomeIcon)`
     font-size: 3rem;
     color: ${props => props.theme.bg.light};
     background: ${props => props.theme.bg.danger};
-
-    @media (max-width: 768px) {
-      visibility: hidden;
-    }
   `}
 `
 export const IconExit = styled(FontAwesomeIcon)`

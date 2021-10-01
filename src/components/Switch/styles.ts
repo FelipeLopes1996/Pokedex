@@ -1,9 +1,14 @@
 import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
-  /* position: absolute; */
-  bottom: 5rem;
-  left: 10rem;
+  position: absolute;
+  bottom: 3rem;
+  @media (max-width: 1000px) {
+    position: initial;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
 `
 
 export const Label = styled.label`
@@ -14,7 +19,6 @@ export const Label = styled.label`
   line-height: 0;
   font-size: 0;
   overflow: hidden;
-  color: rgba(0, 0, 0, 0);
 `
 
 export const Input = styled.input`
@@ -24,14 +28,14 @@ export const Input = styled.input`
     width: 0;
     height: 0;
     &:checked + ${Slider} {
-      background: ${props => props.theme.bg.secondary};
+      background: ${props => props.theme.bg.danger};
     }
     &:focus + ${Slider} {
-      box-shadow: 0 0 1px ${props => props.theme.bg.secondary};
+      box-shadow: 0 0 1px ${props => props.theme.bg.default};
     }
     &:checked + ${Slider}:before {
       transform: translateX(1.4rem);
-      background: ${props => props.theme.bg.primary};
+      background: ${props => props.theme.bg.default};
     }
   `}
 `
@@ -40,11 +44,12 @@ export const Slider = styled.span`
   ${() => css`
     position: absolute;
     cursor: pointer;
+    border: 1px solid #ccc;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: ${props => props.theme.bg.dark};
+    background: ${props => props.theme.bg.default};
     transition: all 300ms ease-in-out;
     border-radius: 2rem;
     box-shadow: 0 0 1px ${props => props.theme.bg.info};
@@ -54,9 +59,9 @@ export const Slider = styled.span`
       height: 1.1rem;
       width: 1.1rem;
       right: 0;
-      left: 0.2rem;
-      bottom: 0.2rem;
-      background: ${props => props.theme.bg.info};
+      left: 0.1rem;
+      bottom: 0.1rem;
+      background: ${props => props.theme.bg.danger};
       border-radius: 50%;
       transition: all 300ms ease-in-out;
     }
