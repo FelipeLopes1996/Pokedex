@@ -39,6 +39,11 @@ export const WrapperIcon = styled.div`
     position: relative;
     left: 11rem;
     top: 2rem;
+
+    @media (max-width: 1000px) {
+      left: 27rem;
+      top: 3rem;
+    }
   `}
 `
 
@@ -46,12 +51,19 @@ export const Icon = styled(FontAwesomeIcon)`
   color: ${props => props.theme.fg.danger};
   font-size: 1.4rem;
   cursor: pointer;
+  @media (max-width: 1000px) {
+    font-size: 2rem;
+  }
 `
 
 export const IconFix = styled(FontAwesomeIcon)`
   color: ${props => props.theme.fg.danger};
   font-size: 1.4rem;
   cursor: pointer;
+
+  @media (max-width: 1000px) {
+    font-size: 2rem;
+  }
 `
 
 export const WrapperImg = styled.div`
