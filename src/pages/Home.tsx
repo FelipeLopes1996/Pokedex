@@ -1,7 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useCallback } from 'react'
 import * as Styled from './styles'
 import { CardPoke } from '../components/CardPoke'
-// import { GridFavTyp } from '../components/GridFavTyp'
 import { GridCard } from '../components/GridCards'
 import { GridFilter } from '../components/GridFilter'
 import { Content } from '../components/Content'
@@ -107,10 +107,6 @@ export const Home = () => {
     retornaValue()
   }, [retornaValue])
 
-  // const ObervabelFilterSeach = React.useMemo(() => {
-  //   return !filterType.length ? pokeFilterSearch : filterTypeSearch
-  // }, [filterType.length, filterTypeSearch, pokeFilterSearch])
-
   const handleAddFavorites = useCallback(
     (fav: any, pok: any) => {
       let newFavorites = { ...favorites }
@@ -131,7 +127,6 @@ export const Home = () => {
   )
 
   return (
-    // <Styled.Content>
     <>
       <Header />
       <GridFilter>
@@ -151,13 +146,11 @@ export const Home = () => {
       </GridFilter>
 
       <Content>
-        {/* <GridFavTyp> */}
         <Filter handleFilters={filters => handleFilters(filters, 'type')} />
         <Switch
           favorite={hasFavorite}
           handleFaVoritesChange={() => setHasFavorite(!hasFavorite)}
         />
-        {/* </GridFavTyp> */}
         <GridCard>
           {!hasFavorite ? (
             <CardPoke
@@ -178,6 +171,5 @@ export const Home = () => {
         </GridCard>
       </Content>
     </>
-    // </Styled.Content>
   )
 }
