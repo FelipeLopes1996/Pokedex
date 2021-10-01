@@ -22,6 +22,7 @@ export const Select = styled.select`
     height: 100%;
     font-size: 1rem;
     font-weight: 600;
+    color: #b3b2af;
     padding: 1rem;
     margin-left: 1rem;
     background: ${props => props.theme.bg.light};
@@ -40,8 +41,10 @@ export const Select = styled.select`
       background: ${props => props.theme.bg.light};
     }
     @media (max-width: 1000px) {
-      width: 45.5%;
+      width: 100%;
+      padding: 1.8rem;
       margin: 0;
+      font-size: 1.8rem;
     }
   `}
 `
@@ -49,5 +52,10 @@ export const Span = styled.span`
   ${() => css`
     font-weight: 600;
     font-size: 1.8rem;
+
+    @media (max-width: 1000px) {
+      font-size: 4rem;
+      margin-bottom: 1.8rem;
+    }
   `}
 `

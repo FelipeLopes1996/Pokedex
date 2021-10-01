@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   ${() => css`
     width: 45%;
     @media (max-width: 1000px) {
+      width: 100%;
       margin-bottom: 2rem;
     }
   `}
@@ -32,7 +33,6 @@ export const Input = styled.input`
     border: 1px solid #ccc;
     width: 100%;
     height: 100%;
-    font-size: 1rem;
     padding: 1rem;
     background: ${props => props.theme.bg.light};
     padding-right: 3.7rem;
@@ -50,10 +50,19 @@ export const Input = styled.input`
         ${props => props.theme.bg.primary};
       background: ${props => props.theme.bg.light};
     }
+
+    @media (max-width: 1000px) {
+      width: 100%;
+      padding: 2rem;
+
+      ::-webkit-input-placeholder {
+        font-size: 2rem;
+      }
+    }
   `}
 `
 export const Icon = styled(FontAwesomeIcon)`
-  /* font-size: 1rem;
-  $ {props => props.theme.bg.danger}
-  z-index: 100; */
+  @media (max-width: 1000px) {
+    font-size: 3rem;
+  }
 `

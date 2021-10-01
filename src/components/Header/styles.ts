@@ -5,16 +5,12 @@ export const Wrapper = styled.div`
   ${() => css`
     background: #dc3545;
     padding: 1rem 10rem;
-
-    @media (max-width: 1000px) {
-    }
   `}
 `
 
 export const WrapperNav = styled.nav`
   ${() => css`
     display: flex;
-    width: 100%;
     justify-content: space-between;
     div {
       display: flex;
@@ -27,7 +23,15 @@ export const WrapperNav = styled.nav`
       }
     }
     @media (max-width: 1000px) {
-      justify-content: center;
+      /* justify-content: center; */
+
+      div {
+        justify-content: space-between;
+        h1 {
+          font-size: 5rem;
+          margin-right: 5rem;
+        }
+      }
     }
   `}
 `
@@ -37,6 +41,9 @@ export const Icon = styled(FontAwesomeIcon)`
     font-size: 3rem;
     color: ${props => props.theme.bg.light};
     background: ${props => props.theme.bg.danger};
+    @media (max-width: 1000px) {
+      font-size: 4rem;
+    }
   `}
 `
 export const IconExit = styled(FontAwesomeIcon)`
@@ -44,6 +51,10 @@ export const IconExit = styled(FontAwesomeIcon)`
     font-size: 1rem;
     color: ${props => props.theme.bg.light};
     background: ${props => props.theme.bg.danger};
+
+    @media (max-width: 1000px) {
+      font-size: 4rem;
+    }
   `}
 `
 export const IconRow = styled(FontAwesomeIcon)`
@@ -52,5 +63,8 @@ export const IconRow = styled(FontAwesomeIcon)`
     margin-right: 1rem;
     color: ${props => props.theme.bg.light};
     background: ${props => props.theme.bg.danger};
+    @media (max-width: 1000px) {
+      font-size: 4rem;
+    }
   `}
 `

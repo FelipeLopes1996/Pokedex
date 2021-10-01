@@ -6,8 +6,13 @@ export const Wrapper = styled.div`
   @media (max-width: 1000px) {
     position: initial;
     display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5rem;
+
+    h1 {
+      font-size: 4rem;
+      margin-right: 2rem;
+    }
   }
 `
 
@@ -19,6 +24,11 @@ export const Label = styled.label`
   line-height: 0;
   font-size: 0;
   overflow: hidden;
+  @media (max-width: 1000px) {
+    /* margin: 1.5rem 0; */
+    width: 5rem;
+    height: 3rem;
+  }
 `
 
 export const Input = styled.input`
@@ -53,6 +63,12 @@ export const Slider = styled.span`
     transition: all 300ms ease-in-out;
     border-radius: 2rem;
     box-shadow: 0 0 1px ${props => props.theme.bg.info};
+    @media (max-width: 1000px) {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
     &:before {
       content: '';
       position: absolute;
@@ -64,6 +80,13 @@ export const Slider = styled.span`
       background: ${props => props.theme.bg.danger};
       border-radius: 50%;
       transition: all 300ms ease-in-out;
+      @media (max-width: 1000px) {
+        height: 2.1rem;
+        width: 2.1rem;
+        right: 0;
+        left: 0.7rem;
+        bottom: 0.3rem;
+      }
     }
   `}
 `
