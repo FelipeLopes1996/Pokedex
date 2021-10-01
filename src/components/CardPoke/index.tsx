@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import { CardPokeProps } from '../../types/cardTypes'
 import * as Styled from './styles'
@@ -11,15 +10,17 @@ type GridCardMap = {
   handleDelete?: (index: any) => void
 }
 
-export const CardPoke = ({
-  favorite = false,
-  value,
-  data,
-  handleFaVorites,
-  handleDelete,
-}: GridCardMap) => {
+export const CardPoke = ({ data, handleFaVorites }: GridCardMap) => {
   const [checked, setCheckd] = React.useState([])
-  const [favorites, setFavorites] = React.useState(favorite)
+  const [show, setShow] = React.useState(12)
+
+  const showMore = React.useCallback(
+    total => {
+      const show = data.filter((_, index) => index < total)
+      return show
+    },
+    [data]
+  )
 
   const typeColors: any = {
     Fire: 'fire',
@@ -55,10 +56,22 @@ export const CardPoke = ({
     handleFaVorites(newChecked)
   }
 
+  React.useEffect(() => {
+    const showInitialLocalStorage = localStorage.setItem(
+      'initialShow',
+      String(12)
+    )
+    showInitialLocalStorage
+    const dataInitialShow = parseFloat(localStorage.getItem('initialShow'))
+    if (dataInitialShow) {
+      setShow(dataInitialShow)
+    }
+  }, [data])
+
   return (
     <>
-      {data &&
-        data.map((dates, index) => (
+      {showMore(show)?.length &&
+        showMore(show).map((dates, index) => (
           <Styled.Wrapper key={index}>
             <Styled.WrapperIcon>
               <Styled.Icon
@@ -95,6 +108,17 @@ export const CardPoke = ({
             </Styled.WrappeType>
           </Styled.Wrapper>
         ))}
+      {data.length > showMore(show)?.length && (
+        <Styled.WrapperShowMore>
+          <button
+            onClick={() => {
+              setShow(preState => preState + 12)
+            }}
+          >
+            + Ver Mais
+          </button>
+        </Styled.WrapperShowMore>
+      )}
     </>
   )
 }

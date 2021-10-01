@@ -75,7 +75,7 @@ export const WrappeName = styled.div`
     }
     p {
       color: ${props => props.theme.bg.secondary};
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       font-weight: 600;
       margin-top: 0.4rem;
     }
@@ -88,7 +88,7 @@ export const WrappeType = styled.div`
     margin: 0.5rem 0;
     p {
       color: ${props => props.theme.bg.default};
-      font-size: 0.7rem;
+      font-size: 1.2rem;
       font-weight: 600;
       padding: 0.5rem;
       border-radius: 0.5rem;
@@ -151,6 +151,32 @@ export const WrappeType = styled.div`
     .fighting {
       background: #5edaf2;
       color: ${props => props.theme.bg.dark};
+    }
+  `}
+`
+export const WrapperShowMore = styled.div`
+  ${() => css`
+    width: 95%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      cursor: pointer;
+      padding: 0.5rem 0;
+      color: #dc3545;
+      font-size: 1.5rem;
+      border: 2px solid #dc3545;
+      background: #ffffff;
+      margin: 0.5rem 0.8rem 0.5rem 0rem;
+      border-radius: 20px;
+      width: 20%;
+      -webkit-transition: all 0.8s ease-out;
+      transition: all 0.3s ease-out;
+
+      &:hover {
+        background: #dc3545;
+        color: #fff;
+      }
     }
   `}
 `

@@ -26,13 +26,16 @@ export const Select = ({
     }
   }
   return (
-    <Styled.Wrapper
-      ref={inputRef}
-      disabled={disabled}
-      onChange={handleChange}
-      value={value}
-    >
-      {children}
+    <Styled.Wrapper>
+      <Styled.Span>Filtrar por:</Styled.Span>
+      <Styled.Select
+        ref={inputRef}
+        disabled={disabled}
+        onChange={handleChange}
+        value={value}
+      >
+        {children}
+      </Styled.Select>
     </Styled.Wrapper>
   )
 }

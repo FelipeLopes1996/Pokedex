@@ -1,9 +1,7 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-unused-vars */
 import React, { useCallback } from 'react'
 import * as Styled from './styles'
 import { CardPoke } from '../components/CardPoke'
-import { GridFavTyp } from '../components/GridFavTyp'
+// import { GridFavTyp } from '../components/GridFavTyp'
 import { GridCard } from '../components/GridCards'
 import { GridFilter } from '../components/GridFilter'
 import { Content } from '../components/Content'
@@ -109,9 +107,9 @@ export const Home = () => {
     retornaValue()
   }, [retornaValue])
 
-  const ObervabelFilterSeach = React.useMemo(() => {
-    return !filterType.length ? pokeFilterSearch : filterTypeSearch
-  }, [filterType.length, filterTypeSearch, pokeFilterSearch])
+  // const ObervabelFilterSeach = React.useMemo(() => {
+  //   return !filterType.length ? pokeFilterSearch : filterTypeSearch
+  // }, [filterType.length, filterTypeSearch, pokeFilterSearch])
 
   const handleAddFavorites = useCallback(
     (fav: any, pok: any) => {
@@ -133,7 +131,8 @@ export const Home = () => {
   )
 
   return (
-    <Styled.Content>
+    // <Styled.Content>
+    <>
       <Header />
       <GridFilter>
         <Input
@@ -142,22 +141,23 @@ export const Home = () => {
           placeHolder="Pesquisar por nome ou número"
           onChange={v => setSearch(v)}
         />
+
         <Select value={searchOrder} onChange={v => setSearchOrder(v)}>
-          <option value="1">Menor Número</option>
-          <option value="2">Maior Número</option>
-          <option value="3">A-Z</option>
-          <option value="4">Z-A</option>
+          <Styled.Option value="1">Menor Número</Styled.Option>
+          <Styled.Option value="2">Maior Número</Styled.Option>
+          <Styled.Option value="3">A-Z</Styled.Option>
+          <Styled.Option value="4">Z-A</Styled.Option>
         </Select>
       </GridFilter>
 
       <Content>
-        <GridFavTyp>
-          <Filter handleFilters={filters => handleFilters(filters, 'type')} />
-          <Switch
-            favorite={hasFavorite}
-            handleFaVoritesChange={() => setHasFavorite(!hasFavorite)}
-          />
-        </GridFavTyp>
+        {/* <GridFavTyp> */}
+        <Filter handleFilters={filters => handleFilters(filters, 'type')} />
+        <Switch
+          favorite={hasFavorite}
+          handleFaVoritesChange={() => setHasFavorite(!hasFavorite)}
+        />
+        {/* </GridFavTyp> */}
         <GridCard>
           {!hasFavorite ? (
             <CardPoke
@@ -177,6 +177,7 @@ export const Home = () => {
           {testea.length === 0 && <h1>Não há este pokemon</h1>}
         </GridCard>
       </Content>
-    </Styled.Content>
+    </>
+    // </Styled.Content>
   )
 }
