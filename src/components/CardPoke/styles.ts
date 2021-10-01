@@ -9,6 +9,9 @@ export const Wrapper = styled.div`
     width: 13.5rem;
     border-radius: 0.5rem;
     margin: 0 1rem 1rem;
+    @media (max-width: 1000px) {
+      width: 30rem;
+    }
 
     .show {
       visibility: hidden;
@@ -60,6 +63,12 @@ export const WrapperImg = styled.div`
     img {
       width: 100%;
       height: 13rem;
+    }
+    @media (max-width: 1000px) {
+      img {
+        width: 100%;
+        height: 23rem;
+      }
     }
   `}
 `
@@ -176,6 +185,17 @@ export const WrapperShowMore = styled.div`
       &:hover {
         background: #dc3545;
         color: #fff;
+      }
+    }
+
+    @media (max-width: 1000px) {
+      width: 100%;
+      margin: 2rem 0;
+      button {
+        width: 30%;
+        padding: 1rem 0;
+        font-size: 2rem;
+        font-weight: 600;
       }
     }
   `}

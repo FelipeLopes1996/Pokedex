@@ -6,7 +6,6 @@ export const Container = styled.section`
     margin: 1rem 10rem 0;
     @media (max-width: 1000px) {
       flex-direction: column;
-      justify-content: center;
       align-items: center;
     }
   `}

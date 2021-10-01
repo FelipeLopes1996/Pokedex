@@ -20,8 +20,8 @@ export const Wrapper = styled.section`
       background-color: #e2350d;
     }
 
-    @media (max-width: 568px) {
-      height: 60vh;
+    @media (max-width: 1000px) {
+      width: 85%;
     }
   `}
 `
