@@ -115,6 +115,7 @@ export const CardPoke = ({ data, handleFaVorites }: GridCardMap) => {
               setShow(preState => preState + 12)
             }}
             id="tag-test"
+            className="tag-class"
           >
             + Ver Mais
           </button>
