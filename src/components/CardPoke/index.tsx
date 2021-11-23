@@ -114,6 +114,7 @@ export const CardPoke = ({ data, handleFaVorites }: GridCardMap) => {
             onClick={() => {
               setShow(preState => preState + 12)
             }}
+            id="tag-test"
           >
             + Ver Mais
           </button>
