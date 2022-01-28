@@ -100,7 +100,7 @@ export const Home = () => {
     pokeFilterSearch,
   ])
 
-  const testea = React.useMemo(() => {
+  const finalResult = React.useMemo(() => {
     return retornaValue()
   }, [retornaValue])
 
@@ -126,6 +126,10 @@ export const Home = () => {
     },
     [filteres]
   )
+
+  console.log(favorites)
+  console.log(favorites.poke)
+  console.log(favorites.poke.length)
 
   return (
     <>
@@ -155,7 +159,7 @@ export const Home = () => {
         <GridCard>
           {!hasFavorite ? (
             <CardPoke
-              data={testea}
+              data={finalResult}
               handleFaVorites={pok => handleAddFavorites(pok, 'poke')}
             />
           ) : hasFavorite ? (
@@ -168,7 +172,7 @@ export const Home = () => {
           {hasFavorite && favorites.poke.length === 0 && (
             <h1>Não há pokemons nos favoritos</h1>
           )}
-          {testea.length === 0 && <h1>Não há este pokemon</h1>}
+          {finalResult.length === 0 && <h1>Não há este pokemon</h1>}
         </GridCard>
       </Content>
     </>

@@ -70,7 +70,7 @@ export const CardPoke = ({ data, handleFaVorites }: GridCardMap) => {
 
   return (
     <>
-      {showMore(show)?.length &&
+      {showMore(show) &&
         showMore(show).map((dates, index) => (
           <Styled.Wrapper key={index}>
             <Styled.WrapperIcon>
